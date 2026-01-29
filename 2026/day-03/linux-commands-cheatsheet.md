@@ -55,7 +55,7 @@ Date of Document Creation_29-01-2026
 - `ip r` → Show routing table
 - `ping` → Check server connectivity
 - `traceroute` → Find network path issues
-- `ss -tulnp` → Show open ports & services
+- `ss -tulnp` → Show open ports & services(-t->TCP Ports, -u->UDP ports, -l-> Listening ports, -n-> Numeric output(fast), -p-> Process name & PID
 - `netstat` → Older port-check tool
 - `lsof -i :80` → Check what uses port 80
 - `nslookup` / `dig` → DNS troubleshooting
