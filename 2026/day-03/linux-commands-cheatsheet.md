@@ -31,7 +31,8 @@ Date of Document Creation_29-01-2026
 - `cd` → Change directory
 - `touch` → Create empty file
 - `mkdir` → Create directory
-- `rm` → Delete file/directory
+- `rm` → Delete file
+- `rm -rf`-> Delete Directory
 - `cp` → Copy files
 - `mv` → Move or rename files
 - `cat` → View file content
