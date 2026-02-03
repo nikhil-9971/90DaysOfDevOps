@@ -1,27 +1,117 @@
-# Day 11 Challenge
+# 🧠 Day 11 Challenge – Linux Ownership & Groups
 
-## Files & Directories Created
-1- devops-file.txt -file
-2- project-config.yaml- file
-3- app-logs- directory
-4- heist-project- directory
-5-vault- directory
-6-plans- directory
-7-gold.txt- file
-8-strategy.conf-> file
-9-bank-heist -direcory
-10-access-codes.txt-> file
-11-blueprints.pdf->file
-12-escape-plan.txt-> file
+## 📁 Files & Directories Created
 
-## Ownership Changes
-[before/after for each file]
+| No | Name                | Type      |
+| -- | ------------------- | --------- |
+| 1  | devops-file.txt     | File      |
+| 2  | team-notes.txt      | File      |
+| 3  | project-config.yaml | File      |
+| 4  | app-logs            | Directory |
+| 5  | heist-project       | Directory |
+| 6  | vault               | Directory |
+| 7  | plans               | Directory |
+| 8  | gold.txt            | File      |
+| 9  | strategy.conf       | File      |
+| 10 | bank-hiest          | Directory |
+| 11 | access-codes.txt    | File      |
+| 12 | blueprints.pdf      | File      |
+| 13 | escape-plan.txt     | File      |
 
-Example:
-- devops-file.txt: user:user → tokyo:heist-team
+---
 
-## Commands Used
-[your commands here]
+## 👤 Ownership Changes Performed
 
-## What I Learned
-[3 key points about file ownership]
+| Resource            | Before        | After                 |
+| ------------------- | ------------- | --------------------- |
+| devops-file.txt     | ubuntu:ubuntu | tokyo:ubuntu          |
+| team-notes.txt      | ubuntu:ubuntu | ubuntu:heist-team     |
+| project-config.yaml | ubuntu:ubuntu | professors:heist-team |
+| app-logs            | ubuntu:ubuntu | berlin:heist-team     |
+| heist-project       | ubuntu:ubuntu | professors:planners   |
+| vault               | ubuntu:ubuntu | professors:planners   |
+| plans               | ubuntu:ubuntu | professors:planners   |
+| gold.txt            | ubuntu:ubuntu | professors:planners   |
+| strategy.conf       | ubuntu:ubuntu | professors:planners   |
+| bank-hiest          | ubuntu:ubuntu | ubuntu:ubuntu         |
+| access-codes.txt    | ubuntu:ubuntu | tokyo:vault-team      |
+| blueprints.pdf      | ubuntu:ubuntu | berlin:tech-team      |
+| escape-plan.txt     | ubuntu:ubuntu | nairobi:vault-team    |
+
+---
+
+## 🖥️ Commands Used
+
+### 🔹 Basic File & Directory Operations
+
+```bash
+ls -l
+touch devops-file.txt
+ls -l devops-file.txt
+```
+
+### 🔹 Change Ownership (User Only)
+
+```bash
+sudo chown tokyo devops-file.txt
+```
+
+### 🔹 Create File & Assign Group
+
+```bash
+touch team-notes.txt
+sudo groupadd heist-team
+sudo chown :heist-team team-notes.txt
+```
+
+### 🔹 Change Owner & Group Together
+
+```bash
+touch project-config.yaml
+sudo chown professors:heist-team project-config.yaml
+```
+
+### 🔹 Directory Ownership
+
+```bash
+mkdir app-logs
+sudo chown berlin:heist-team app-logs
+```
+
+### 🔹= Recursive Ownership
+
+```bash
+mkdir -p heist-project/vault
+mkdir -p heist-project/plans
+touch heist-project/vault/gold.txt
+touch heist-project/plans/strategy.conf
+sudo groupadd planners
+sudo chown -R professors:planners heist-project
+ls -lR heist-project/
+```
+
+### 🔹 Bank Heist Scenario
+
+```bash
+sudo groupadd vault-team
+sudo groupadd tech-team
+mkdir bank-hiest
+touch bank-hiest/access-codes.txt
+touch bank-hiest/blueprints.pdf
+touch bank-hiest/escape-plan.txt
+
+sudo chown tokyo:vault-team bank-hiest/access-codes.txt
+sudo chown berlin:tech-team bank-hiest/blueprints.pdf
+sudo chown nairobi:vault-team bank-hiest/escape-plan.txt
+ls -lR bank-hiest/
+```
+
+---
+
+## 📚 What I Learned
+
+1. How to change file and directory ownership using `chown`
+2. How to apply ownership changes recursively using `-R`
+3. How to change **owner and group together in a single command**
+
+
