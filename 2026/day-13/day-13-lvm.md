@@ -10,7 +10,7 @@ pvcreate /dev/nvme1n1 /dev/nvme2n1 /dev/nvme3n1
 
 ## Step 2: Create Volume Group (VG)
 
-```bash
+
 vgcreate devops_vg /dev/nvme1n1 /dev/nvme2n1
 
 
