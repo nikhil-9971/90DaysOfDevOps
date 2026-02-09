@@ -77,3 +77,8 @@ else
         echo "Skipped."
 fi
 
+What I learn
+
+-Shebang defines which interpreter executes the script
+-Conditional logic makes scripts interactive and powerful
+-How to read input and print output in Shell Script
