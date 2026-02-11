@@ -92,3 +92,12 @@ cd /tmp/devops-test || echo " Message: Unable to move in directory"
 touch text.txt || echo "Message: failed to create file"
 
 echo "Script run successfully"
+
+
+What I Learned:
+
+
+Loop structures in Bash
+Script arguments & positional parameters
+Package validation before installation
+Error handling using set -e and ||
