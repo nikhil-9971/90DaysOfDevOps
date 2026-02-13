@@ -207,3 +207,10 @@ function log_message() {
 
 } >> "$LOG_FILE" 2>&1
 
+
+What you learned (3 key points)
+
+- How to compress file and build log rotation script
+- How to delete file using custom date & time
+- How to use cron tab & how to call multiple sh file in main sh file 
+
