@@ -32,7 +32,7 @@ feature → A → F1
 
 Merge creates:
 
-        → F1
+        -> F1
 A → M1 → Merge Commit
 
 This preserves full branch history.
