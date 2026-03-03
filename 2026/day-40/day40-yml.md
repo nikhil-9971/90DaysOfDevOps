@@ -138,10 +138,6 @@ This is shown in the GitHub Actions UI for readability and debugging.
 
 ------------------------------------------------------------------------
 
-## Simple Mental Model
 
-Workflow ├── Trigger (on) └── Jobs └── Runner (runs-on) └── Steps ├──
-uses (prebuilt action) └── run (shell command)
 
-------------------------------------------------------------------------
 
