@@ -1,0 +1,23 @@
+name: Job Output Workflow
+
+
+on:
+    push:
+        branches: [main]
+
+
+jobs:
+    set-output:
+        runs-on: ubuntu-latest
+        outputs:
+            today: ${{ steps.set_output.outputs.today }}
+        steps:
+            - name: Set output variable
+              id: set_output
+              run: echo "today=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+    use-output:
+        needs: set-output
+        runs-on: ubuntu-latest
+        steps:
+            - name: Use output variable
+              run: echo "The date is ${{ needs.set-output.outputs.today }}"

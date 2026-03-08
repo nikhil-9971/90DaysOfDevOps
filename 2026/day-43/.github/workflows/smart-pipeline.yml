@@ -1,0 +1,44 @@
+name: smart pipeline
+
+on :
+    push:
+
+jobs:  
+    lint:
+        runs-on: ubuntu-latest
+        steps:
+           - name: Checkout code
+             uses: actions/checkout@v4
+
+           - name: Set up Python 3.12
+             uses: actions/setup-python@v5
+             with:  
+                python-version: 3.12
+
+           - name: Install dependencies
+             run: pip install -r requirements.txt
+             
+           - name: Run linter
+             run: flake8 app.py
+             
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Testing
+              run: echo "Running tests"
+              
+    summary:
+        needs: [lint, test]
+        runs-on: ubuntu-latest
+        steps:
+            - name: print branch & commit
+              run: |
+                   echo "Branch name: ${{ github.ref_name }}"
+                   echo "commit message: ${{github.event.commits[0].message}}"
+
+                   if [ "${{github.ref_name}}" == "main" ] 
+                    then
+                     echo "This is a push to the main branch."
+                   else
+                     echo "This is push to a feature branch."
+                   fi
