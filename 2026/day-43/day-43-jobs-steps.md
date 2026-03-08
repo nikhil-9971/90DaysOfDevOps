@@ -21,3 +21,5 @@ Next job me use karna:
 ${{ needs.generate-date.outputs.date }}
 
 ```
+
+Thanks
