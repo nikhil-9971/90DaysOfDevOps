@@ -1,0 +1,20 @@
+name: Path and Branch Filter
+
+on:
+    push:
+       branches:
+            - main
+            - 'release/*'
+       paths:
+        - 'src/**'
+        - 'app/**'
+
+jobs:
+    run-when-src-change:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+            
+            - name: Print Message
+              run: echo "This flow work if any changes in src or app"

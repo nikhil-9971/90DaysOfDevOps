@@ -1,0 +1,50 @@
+name: PR Validation Workflow
+
+on:
+    pull_request:
+        branches: [main]
+
+jobs:
+    file-size-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Fail if any new file is over 1 MiB (1024 KiB)
+              uses: pelotech/github-action-file-size-checker@v0.1.2
+              with:
+                max_file_size_kib: '1024' 
+
+    branch-name-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Validate branch name
+              shell: bash
+              run: |
+                BRANCH_NAME="${{ github.head_ref }}"
+                echo "Branch name: $BRANCH_NAME"
+
+                if [[ "$BRANCH_NAME" =~ ^(feature|fix|docs)/.+$ ]]
+                then
+                    echo "Branch name '$BRANCH_NAME' is valid"
+                else
+                    echo "Invalid branch name '$BRANCH_NAME'!"
+                    echo "Allowed patterns: feature/*, fix/*, docs/*"
+                exit 1
+                fi
+    
+    pr-body-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read PR Body and Warn if description is empty
+              shell: bash
+              run: |
+               PR_BODY="${{ github.event.pull_request.body }}"
+               echo "Read PR Body"
+               if [[ -z "$PR_BODY" ]]
+               then
+                    echo "PR description is empty, please fill PR description"
+                else
+                    echo "PR description is present"
+                fi    
