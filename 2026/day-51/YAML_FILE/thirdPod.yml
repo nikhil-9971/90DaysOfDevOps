@@ -1,0 +1,16 @@
+kind: Pod
+apiVersion: v1
+
+metadata:
+  name: github-action-app
+  labels:
+    app: github-action
+    environment: prod
+    team: dev
+
+spec:
+  containers:
+    - name: github-action
+      image: nikhil997164/github-action-app:latest
+      ports:
+        - containerPort: 80
