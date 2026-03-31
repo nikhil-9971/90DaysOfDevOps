@@ -173,7 +173,7 @@ resource "aws_s3_bucket" "app_logs" {
      └── aws_route_table
             └── aws_route_table_association
 
-![image](images/day62t5graph.png)
+![image](images/day62t5b.png)
 ------------------------------------------------------------------------
 
 ## 🧠 Implicit vs Explicit Dependencies
